@@ -24,7 +24,7 @@
 
 ;;; Rate limiting: max N submissions per IP per hour (in-memory)
 
-(def ^:private max-per-hour 3)
+(def ^:private max-per-hour 10)
 (def ^:private submissions (atom {}))
 
 (defn- client-ip [request]
@@ -135,8 +135,7 @@ footer { margin-top: 2.5rem; color: #71717a; font-size: 0.85rem; }
       [:main
        [:h1 (:server-name config)]
        [:p.dim "Minecraft: Java Edition"]
-       body
-       [:footer "Whitelist requests are rate-limited."]]]])))
+       body]]])))
 
 (def ^:private form
   [:form {:method "post" :action "/"}
@@ -153,7 +152,7 @@ footer { margin-top: 2.5rem; color: #71717a; font-size: 0.85rem; }
 (defn- home-page []
   (page
    [:p "This server is whitelisted. Enter your Minecraft username below to add yourself, then connect to "
-    [:code (:server-name config)] "."]
+    [:code "doppel.moe"]]
    form))
 
 (defn- submit [request]

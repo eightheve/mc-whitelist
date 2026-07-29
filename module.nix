@@ -34,7 +34,6 @@ let
     for d in "$dataDir"/world*; do
       [ -d "$d" ] && targets+=("$(basename "$d")")
     done
-    [ -d "$dataDir/datapacks" ] && targets+=("datapacks")
 
     if [ ''${#targets[@]} -gt 0 ]; then
       echo "Backing up: ''${targets[*]}"
@@ -57,8 +56,8 @@ in
 
     serverPackage = lib.mkOption {
       type = lib.types.package;
-      default = pkgs.papermc;
-      description = "Minecraft server package (Paper by default).";
+      default = pkgs.minecraftServers.vanilla;
+      description = "Minecraft server package (vanilla by default).";
     };
 
     dataDir = lib.mkOption {
