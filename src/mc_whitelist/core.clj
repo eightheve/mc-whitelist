@@ -18,7 +18,7 @@
 (def config
   {:fifo           (or (System/getenv "MC_FIFO") "/run/minecraft-server.stdin")
    :whitelist-json (or (System/getenv "MC_WHITELIST_JSON") "/var/lib/minecraft/whitelist.json")
-   :server-name    (or (System/getenv "MC_SERVER_NAME") "mc.doppel.moe")
+   :server-name    (or (System/getenv "MC_SERVER_NAME") "doppel.moe")
    :host           (or (System/getenv "HOST") "0.0.0.0")
    :port           (parse-long (or (System/getenv "PORT") "25566"))})
 
@@ -106,7 +106,7 @@
      [:head
       [:meta {:charset "utf-8"}]
       [:meta {:name "viewport" :content "width=device-width, initial-scale=1"}]
-      [:title (:server-name config)]
+      [:title "mc.doppel.moe"]
       [:style
        (h/raw "
 :root { color-scheme: dark; }
@@ -133,7 +133,7 @@ footer { margin-top: 2.5rem; color: #71717a; font-size: 0.85rem; }
 ")]]
      [:body
       [:main
-       [:h1 (:server-name config)]
+       [:h1 "mc.doppel.moe"]
        [:p.dim "Minecraft: Java Edition"]
        body]]])))
 
@@ -152,7 +152,7 @@ footer { margin-top: 2.5rem; color: #71717a; font-size: 0.85rem; }
 (defn- home-page []
   (page
    [:p "This server is whitelisted. Enter your Minecraft username below to add yourself, then connect to "
-    [:code "doppel.moe"]]
+    [:code (:server-name config)]]
    form))
 
 (defn- submit [request]
