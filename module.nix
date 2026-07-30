@@ -118,7 +118,7 @@ in
 
     backupTime = lib.mkOption {
       type = lib.types.str;
-      default = "*-*-* 05:00:00";
+      default = "*-*-* 04:55:00";
       description = "systemd OnCalendar expression for daily backups.";
     };
   };
